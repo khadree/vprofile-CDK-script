@@ -20,12 +20,14 @@ export class VprofileAppStack extends cdk.Stack {
     //S3 bucket for CodePipeline Artifact
     const artifactBucket = new s3.Bucket(this, 'Bucket',{
       bucketName: 'vprofile-artifact-bucket-my-2025',
-      removalPolicy: cdk.RemovalPolicy.DESTROY
+      removalPolicy: cdk.RemovalPolicy.DESTROY,
+      autoDeleteObjects: true
     });
 
     // ECR repository for application
     const ecrRepo = new ecr.Repository(this, 'Vprofile-ImageRepo', { repositoryName: "vporifle-repo", 
-      removalPolicy: cdk.RemovalPolicy.DESTROY
+      removalPolicy: cdk.RemovalPolicy.DESTROY,
+      autoDeleteImages: true
     });
 
     //VPC
